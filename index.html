@@ -21,7 +21,7 @@ body {
     justify-content: center;
     align-items: center;
     overflow: hidden;
-    animation: gradientMove 10s ease infinite;
+    animation: gradientMove 12s ease infinite;
     background: linear-gradient(-45deg, #ff758c, #ff7eb3, #ffb199, #ff0844);
     background-size: 400% 400%;
 }
@@ -34,13 +34,13 @@ body {
 
 .container {
     background: rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(15px);
+    backdrop-filter: blur(20px);
     padding: 40px;
     border-radius: 25px;
     text-align: center;
     color: white;
     max-width: 420px;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+    box-shadow: 0 25px 50px rgba(0,0,0,0.3);
     animation: fadeIn 1.5s ease;
 }
 
@@ -80,9 +80,20 @@ button {
 }
 
 #noBtn {
-    background: rgba(255,255,255,0.8);
+    background: rgba(255,255,255,0.9);
     color: #ff3c6f;
     position: absolute;
+}
+
+#musicBtn {
+    background: #ffffff;
+    color: #ff3c6f;
+    font-weight: 600;
+    display: none;
+}
+
+#musicBtn:hover {
+    transform: scale(1.1);
 }
 
 .hidden {
@@ -94,7 +105,7 @@ button {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Floating Hearts */
+/* Floating hearts */
 .heart {
     position: absolute;
     color: rgba(255,255,255,0.7);
@@ -106,7 +117,7 @@ button {
     100% { transform: translateY(-10vh); opacity: 0; }
 }
 
-/* Sparkle burst */
+/* Sparkles */
 .sparkle {
     position: absolute;
     font-size: 18px;
@@ -138,26 +149,32 @@ button {
     <h1>You said YES 😭❤️</h1>
     <p>
         Yashika,  
-        you are genuinely the most beautiful part of my life.  
-        The way you laugh, the way you care, the way you just exist —  
-        it makes everything better.  
+        you are the calm in my chaos and the smile in my worst days.  
+        I don’t just love you for how you look —  
+        I love you for how you think, how you care,  
+        and how you make life feel lighter.  
 
-        I don’t just want today.  
-        I want the random Tuesdays.  
-        The chaotic days.  
-        The sleepy calls.  
-        The big dreams.  
+        I want the random calls.  
+        The late night talks.  
+        The future plans.  
         All of it — with you.  
 
-        I choose you. Every time. 💞  
+        I choose you. Always. 💞  
     </p>
+
+    <button id="musicBtn">🎵 Play Our Song</button>
 </div>
+
+<!-- ADD YOUR SONG FILE NAME BELOW -->
+<audio id="bgMusic" src="valentine_song.mp3"></audio>
 
 <script>
 const noBtn = document.getElementById("noBtn");
 const yesBtn = document.getElementById("yesBtn");
 const questionBox = document.getElementById("questionBox");
 const loveMessage = document.getElementById("loveMessage");
+const musicBtn = document.getElementById("musicBtn");
+const music = document.getElementById("bgMusic");
 
 let noSize = 1;
 
@@ -172,7 +189,13 @@ noBtn.addEventListener("mouseover", () => {
 yesBtn.addEventListener("click", () => {
     questionBox.classList.add("hidden");
     loveMessage.classList.remove("hidden");
+    musicBtn.style.display = "inline-block";
     createSparkles();
+});
+
+musicBtn.addEventListener("click", () => {
+    music.play();
+    musicBtn.innerText = "💖 Playing...";
 });
 
 function createHeart() {
@@ -203,4 +226,5 @@ function createSparkles() {
 
 </body>
 </html>
+
 
